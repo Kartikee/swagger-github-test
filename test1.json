@@ -1,0 +1,702 @@
+{
+  "openapi": "3.0.0",
+  "x-stoplight": {
+    "id": "lo5usw02l1rrs"
+  },
+  "info": {
+    "title": "hyperloop-spec-validator",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/validate/file/v4": {
+      "parameters": [],
+      "post": {
+        "summary": "File Validation V4",
+        "operationId": "post-validate-file-v4",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": "failed",
+                      "sku": null,
+                      "feedType": "OMNI_ONLINE_ITEM",
+                      "taskInfo": null,
+                      "Errors": [
+                        {
+                          "code": "ERR_EXT_DATA_013",
+                          "field": null,
+                          "description": "You’re missing a value for Orderable GTIN on the Trade Item Configurations tab in the following rows(s): 7, 8, 9, 10, 11, 12, 13, 14, 15, 16.",
+                          "info": "You’re missing a value for Orderable GTIN on the Trade Item Configurations tab in the following rows(s): 7, 8, 9, 10, 11, 12, 13, 14, 15, 16.",
+                          "severity": "ERROR",
+                          "category": "REQUEST",
+                          "causes": [],
+                          "errorIdentifiers": {}
+                        }
+                      ],
+                      "category": [
+                        "furniture_other",
+                        "trade_item_configurations"
+                      ],
+                      "isOmni5StyleExcel": false,
+                      "totalDataErrors": 0,
+                      "totalItems": 10,
+                      "extractedIdentifierColumns": {},
+                      "bvDataCount": 0,
+                      "bvDataExists": false
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sku": {},
+                    "feedType": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "taskInfo": {},
+                    "Errors": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "field": {},
+                          "description": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "info": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "severity": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "category": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "causes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object"
+                            }
+                          },
+                          "errorIdentifiers": {
+                            "type": "object"
+                          }
+                        }
+                      }
+                    },
+                    "category": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "isOmni5StyleExcel": {
+                      "type": "boolean"
+                    },
+                    "totalDataErrors": {
+                      "type": "number"
+                    },
+                    "totalItems": {
+                      "type": "number"
+                    },
+                    "extractedIdentifierColumns": {
+                      "type": "object"
+                    },
+                    "bvDataCount": {
+                      "type": "number"
+                    },
+                    "bvDataExists": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "feedType",
+                    "category",
+                    "isOmni5StyleExcel",
+                    "totalDataErrors",
+                    "totalItems",
+                    "extractedIdentifierColumns"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sku": {},
+                    "feedType": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "taskInfo": {},
+                    "Errors": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "minItems": 1,
+                      "items": {
+                        "required": [
+                          "code",
+                          "description",
+                          "info",
+                          "severity",
+                          "category"
+                        ],
+                        "properties": {
+                          "code": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "field": {},
+                          "description": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "info": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "severity": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "category": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "causes": {
+                            "type": "array",
+                            "items": {
+                              "required": [],
+                              "properties": {}
+                            }
+                          },
+                          "errorIdentifiers": {
+                            "type": "object",
+                            "properties": {},
+                            "required": []
+                          }
+                        }
+                      }
+                    },
+                    "category": {
+                      "type": "array",
+                      "items": {
+                        "required": [],
+                        "properties": {}
+                      }
+                    },
+                    "isOmni5StyleExcel": {
+                      "type": "boolean"
+                    },
+                    "totalDataErrors": {
+                      "type": "number"
+                    },
+                    "totalItems": {
+                      "type": "number"
+                    },
+                    "extractedIdentifierColumns": {
+                      "type": "object",
+                      "properties": {},
+                      "required": []
+                    },
+                    "bvDataCount": {
+                      "type": "number"
+                    },
+                    "bvDataExists": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "feedType",
+                    "Errors",
+                    "category",
+                    "isOmni5StyleExcel",
+                    "totalDataErrors",
+                    "totalItems",
+                    "extractedIdentifierColumns",
+                    "bvDataCount",
+                    "bvDataExists"
+                  ],
+                  "x-examples": {
+                    "example-1": {
+                      "status": "failed",
+                      "sku": null,
+                      "feedType": "OMNI_ONLINE_ITEM",
+                      "taskInfo": null,
+                      "Errors": [
+                        {
+                          "code": "ERR_EXT_DATA_013",
+                          "field": null,
+                          "description": "You’re missing a value for Orderable GTIN on the Trade Item Configurations tab in the following rows(s): 7, 8, 9, 10, 11, 12, 13, 14, 15, 16.",
+                          "info": "You’re missing a value for Orderable GTIN on the Trade Item Configurations tab in the following rows(s): 7, 8, 9, 10, 11, 12, 13, 14, 15, 16.",
+                          "severity": "ERROR",
+                          "category": "REQUEST",
+                          "causes": [],
+                          "errorIdentifiers": {}
+                        }
+                      ],
+                      "category": [
+                        "furniture_other",
+                        "trade_item_configurations"
+                      ],
+                      "isOmni5StyleExcel": false,
+                      "totalDataErrors": 0,
+                      "totalItems": 10,
+                      "extractedIdentifierColumns": {},
+                      "bvDataCount": 0,
+                      "bvDataExists": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "Not Acceptable",
+            "content": {
+              "multipart/form-data": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": "failed",
+                      "sku": null,
+                      "feedType": "OMNI_ONLINE_ITEM",
+                      "taskInfo": null,
+                      "Errors": [
+                        {
+                          "code": "ERR_EXT_DATA_013",
+                          "field": null,
+                          "description": "You’re missing a value for Orderable GTIN on the Trade Item Configurations tab in the following rows(s): 7, 8, 9, 10, 11, 12, 13, 14, 15, 16.",
+                          "info": "You’re missing a value for Orderable GTIN on the Trade Item Configurations tab in the following rows(s): 7, 8, 9, 10, 11, 12, 13, 14, 15, 16.",
+                          "severity": "ERROR",
+                          "category": "REQUEST",
+                          "causes": [],
+                          "errorIdentifiers": {}
+                        }
+                      ],
+                      "category": [
+                        "furniture_other",
+                        "trade_item_configurations"
+                      ],
+                      "isOmni5StyleExcel": false,
+                      "totalDataErrors": 0,
+                      "totalItems": 10,
+                      "extractedIdentifierColumns": {},
+                      "bvDataCount": 0,
+                      "bvDataExists": false
+                    }
+                  }
+                }
+              }
+            },
+            "headers": {
+              "feedType": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "category": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "isOmni5StyleExcel": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "totalDataErrors": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "total number of Data Errors across all Items"
+              },
+              "totalItems": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "total number of Items in the Excel"
+              },
+              "totalItemsWithDataErrors": {
+                "schema": {
+                  "type": "integer"
+                },
+                "description": "Number of Items which have Data Errors"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "",
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "status": "failed",
+                      "sku": null,
+                      "feedType": "OMNI_ONLINE_ITEM",
+                      "taskInfo": null,
+                      "Errors": [
+                        {
+                          "code": "ERR_EXT_DATA_013",
+                          "field": null,
+                          "description": "You’re missing a value for Orderable GTIN on the Trade Item Configurations tab in the following rows(s): 7, 8, 9, 10, 11, 12, 13, 14, 15, 16.",
+                          "info": "You’re missing a value for Orderable GTIN on the Trade Item Configurations tab in the following rows(s): 7, 8, 9, 10, 11, 12, 13, 14, 15, 16.",
+                          "severity": "ERROR",
+                          "category": "REQUEST",
+                          "causes": [],
+                          "errorIdentifiers": {}
+                        }
+                      ],
+                      "category": [
+                        "furniture_other",
+                        "trade_item_configurations"
+                      ],
+                      "isOmni5StyleExcel": false,
+                      "totalDataErrors": 0,
+                      "totalItems": 10,
+                      "extractedIdentifierColumns": {},
+                      "bvDataCount": 0,
+                      "bvDataExists": false
+                    }
+                  },
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "sku": {},
+                    "feedType": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "taskInfo": {},
+                    "Errors": {
+                      "type": "array",
+                      "uniqueItems": true,
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "field": {},
+                          "description": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "info": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "severity": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "category": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "causes": {
+                            "type": "array",
+                            "items": {
+                              "type": "object"
+                            }
+                          },
+                          "errorIdentifiers": {
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "code",
+                          "description",
+                          "info",
+                          "severity",
+                          "category"
+                        ]
+                      }
+                    },
+                    "category": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "isOmni5StyleExcel": {
+                      "type": "boolean"
+                    },
+                    "totalDataErrors": {
+                      "type": "number"
+                    },
+                    "totalItems": {
+                      "type": "number"
+                    },
+                    "extractedIdentifierColumns": {
+                      "type": "object"
+                    },
+                    "bvDataCount": {
+                      "type": "number"
+                    },
+                    "bvDataExists": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "feedType",
+                    "Errors",
+                    "category",
+                    "isOmni5StyleExcel",
+                    "totalDataErrors",
+                    "totalItems"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Realtime File & Schema Validation Endpoint for Omni 1.0/5.0/MultiBox\nThis signature is same as http://partner.datareceiver.stg0.walmart.com/partner-data-receiver-app/services/v3/feeds",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "Content-Type",
+            "description": "value: multipart/form-data",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "WM_AUDIT.ORIGIN_SOURCE",
+            "description": "ex: ISAM_STORE",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "WM_AUDIT.USER_ID",
+            "description": "ex: <loginId>",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "WM_CONSUMER.ID",
+            "description": "ex: 6ada5ec4-865b-4411-a434-6a349e8a28aa",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "WM_DATA_SOURCE",
+            "description": "ex: STORE_MERCHANT",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "WM_SPEC_MODE",
+            "description": "ex:MERGE/REPLACE",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "WM_SPEC_SUBSET",
+            "description": "ex:INTERNAL/EXTERNAL",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "WM_SVC.ENV",
+            "description": "ex:stg0/prod",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "WM_SVC.NAME",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "WM_SVC_REQ_FILE_TYPE",
+            "description": "ex:XLSX",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "WM_AUDIT.GEN_DATE"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "WM_CONSUMER.CHANNEL.TYPE"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "WM_QOS.CORRELATION_ID"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "header",
+            "name": "WM_SEC.TIMESTAMP"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "feedType",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "martId",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "orgId",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "partnerId",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "sellerId",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "uploadedBy",
+            "required": true
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "userName"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "vendorId"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "batchId"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "shipNode"
+          }
+        ]
+      }
+    },
+    "/user": {}
+  },
+  "components": {
+    "schemas": {}
+  }
+}
